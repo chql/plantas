@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Painel do Administrador</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Plantas</h3>
+                        <p class="card-text">Gerencie o banco de dados de plantas.</p>
+                        <a href="{% url 'plantas-create' %}" class="btn btn-lg btn-outline-primary">Adicionar</a>
+                        <a href="{% url 'plantas-list' %}" class="btn btn-lg btn-outline-secondary">Listar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Receitas</h3>
+                        <p class="card-text">Gerencie o banco de dados de receitas.</p>
+                        <a href="{% url 'receitas-create' %}" class="btn btn-lg btn-outline-primary">Adicionar</a>
+                        <a href="{% url 'receitas-list' %}" class="btn btn-lg btn-outline-secondary">Listar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

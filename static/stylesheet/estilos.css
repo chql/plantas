@@ -1,0 +1,186 @@
+/*
+Geral - Estilos compartilhados por varios elementos da página
+*/
+
+body{
+	font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+	color:#484848;
+}
+
+h1, h2, h3{
+	margin: 0;
+	font-family: 'Ubuntu', sans-serif;
+	text-align: center;
+	
+}
+
+/*Navegação de topo e menus*/
+
+nav{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #fff;
+}
+nav > a {
+	text-decoration: none;
+	color: #f1f1f1;
+	font-weight: 700;
+	font-size: 28px;
+
+}
+nav ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+nav ul li{
+	text-align: center;
+	width: 100%;
+}
+
+nav ul li a{
+	display: inline-block;
+	padding: 10px 0;
+	width: 100%;
+	text-decoration: none;
+	color:#000;
+}
+img {
+    border-style: none;
+    width: 30%;
+    margin: 5px 8% 5px 8%;
+}
+
+
+/*Estilo do Cabeçalho*/
+
+header {
+	background-position: center;
+}
+
+
+/*Estilo do Rodápé do site*/
+
+footer{
+	text-align: center;
+	background-color: #0F493F;
+	color:#90C541;
+	padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+.copyright-text {
+    font-family: 'Montserrat-Light', sans-serif;
+    letter-spacing: 0.15em;
+    font-size: 14px;
+    color: #90C541;
+}
+
+
+/*Estilo do do lugar onde irá ficar os displays*/
+
+.plantas-sintomas {
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #fff;
+	color:#13564c;
+	padding-top: 60px;
+    padding-bottom: 250px;
+}
+
+.plantas-tipo {
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #e2e2e2;
+	color:#13564c;
+	padding-top: 60px;
+    padding-bottom: 250px;
+}
+
+/*Estilo do texto com paralax da moça ao fundo*/
+
+
+.texto-maior {
+	margin: 0;
+	font-family: 'Ubuntu', sans-serif;
+	text-align: center;
+	padding-bottom: 5%;
+
+}
+.texto-motivador {
+	text-align: justify;
+	color:#fff;
+	padding: 8%;
+    background: url('/static/images/fundoverde.jpg') center center no-repeat fixed;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+.texto-motivador p{
+	text-align: inherit;
+	color:#fff;
+	padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+
+}
+.botao2 {
+	display: inline-block;
+    padding: 10px 25px;
+    vertical-align: middle;
+    background: rgba(255,255,255, .7);
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+}
+
+.botao2:hover{background:rgba(255,255,255, 1);
+}
+
+.links {
+	text-align: center
+}
+
+/*Estilo da section antes do footer, Usei a classe sub-rodape direto na section*/
+.sub-rodape {
+	text-align: left;
+	background-color: #12574B;
+	color:#90C541;
+	padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+/*APLICAÇÃO DAS MEDIA QUERIES PARA RESPONSIVIDADE*/
+
+@media screen and (min-width: 768px) {
+
+	/*NAVEGAÇÃO*/
+	nav {
+		flex-direction: row;
+		justify-content: space-around;
+    	background-color: #DEE2D8;
+	}
+	nav ul {
+		flex-direction: row;
+		width: 70%;
+    	padding: initial;
+    	margin: 5px 8% 5px 8%;
+	}
+
+	/*NAVEGAÇÃO*/
+
+	header {
+		height: 0;
+		justify-content: center;
+	}
+}

@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/libs/jquery.tagsinput/dist/jquery.tagsinput.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Preencha os dados da receita</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                {{ form.titulo.label_tag }}
+                {{ form.titulo.errors }}
+                <input name="titulo" id="id_titulo" class="form-control form-control-lg" value="{{ form.titulo.value|default:'' }}">
+            </div>
+            <div class="form-group">
+                {{ form.plantas_base.label_tag }}
+                {{ form.plantas_base }}
+            </div>
+            <div class="form-group">
+                {{ form.conteudo.label_tag }}
+                {{ form.conteudo }}
+            </div>
+            <div class="form-group">
+                {{ form.sintomas.label_tag }}
+                <p class="form-text text-muted">Insira abaixo os sintomas separados por <strong>vírgula</strong></p>
+                <input id="sintomas-tags">
+            </div>
+            <div id="sintomas-hidden" class="form-group">
+                <p>{{ form.sintomas.label_tag }}</p>
+                {{ form.sintomas }}
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar alterações" class="btn btn-success">
+                {% if receita %}
+                    <a href="{% url 'receitas-delete' pk=receita.id %}" class="btn btn-danger float-right">Excluir</a>
+                {% else %}
+                    <a href="{% url 'dashboard' %}" class="btn btn-light">Cancelar</a>
+                {% endif %}
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+    <script src="/static/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/static/libs/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <script src="/static/libs/ckeditor/ckeditor.js"></script>
+    <script src="/static/javascript/sintomasinput.js"></script>
+    <script>CKEDITOR.replace('id_conteudo');</script>
+{% endblock %}

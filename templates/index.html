@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block javascript %}
+    <script type="text/javascript" src="/static/javascript/jquery.js"></script>
+    <script type="text/javascript" src="/static/javascript/efeito.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="slider">
+        <a href="#" id="prev"></a>
+        <a href="#" id="next"></a>
+
+        <ul>
+            <li class="two" style="background-image:url(/static/images/slides/2.jpg);">
+                <div class="row1"><h1>As Plantas e Receitas Naturais que você procura estão aqui</h1></div>
+                <div class="row2"><a href="{% url 'sintomas-filter' %}" class="botao">VEJA AS RECEITAS</a></div>
+            </li>
+            <li class="one" style="background-image:url(/static/images/slides/1.jpg);">
+                <div class="row1"><h1>Você sabia? Muitos Remédios Naturais são bem melhores que os Industrializados...</h1></div>
+                <div class="row2"><a href="#" class="botao">SAIBA MAIS</a></div>
+            </li>
+            <li class="three" style="background-image:url(/static/images/slides/3.jpg);">
+                <div class="row1"><h1>A Cura Pela Natureza a um Clique de distância...</h1></div>
+                <div class="row2"><a href="#" class="botao">TERMOS DE USO</a></div>
+            </li>
+        </ul>
+    </div>
+
+    <header>
+    </header>
+
+    <section class="plantas-sintomas">
+        <h2>PLANTAS POR SINTOMAS</h2>
+
+    </section>
+
+    <section class="plantas-tipo">
+        <h2>PLANTAS POR TIPO</h2>
+    </section>
+
+    <section class="texto-motivador">
+        <h2 class="texto-maior">POR QUE USAR A MEDICINA NATURAL AO INVÉS DA TRADICIONAL?</h2>
+
+        <p>Existem cada vez mais pessoas a procurar alternativas à Medicina tradicional, porque o organismo fica muitas vezes saturado de produtos químicos, tornando-se até intolerante a determinados medicamentos. Por outro lado, desde os primórdios da Humanidade que o Homem encontra na Natureza aquilo de que precisa, não só para subsistir, como também para se curar. No fundo, é fácil compreender que o Universo foi criado de uma tal forma que, assim como a doença é gerada naturalmente, também a cura se encontra na Natureza. Cada planta tem uma história fascinante para contar e propriedades terapêuticas inimagináveis!</p>
+
+        <p>Desde o início dos tempos que o Homem recolhe da Natureza aquilo que precisa para viver, seja a nível de alimentos, de vestuário, etc. Hoje em dia, estamos a voltar a dar valor à capacidade que as plantas têm de nos curar e resolver problemas de saúde. A grande vantagem da Medicina Natural é que não tem efeitos secundários mesmo que o tratamento efetuado tenha de ser longo.</p>
+
+        <div class="links"><a href="#" class="botao2">LEIA MAIS SOBRE ESTE ASSUNTO</a></div>
+    </section>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="/static/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/stylesheet/normalize.css">
+    <link rel="stylesheet" href="/static/stylesheet/estilos.css">
+    <link rel="stylesheet" href="/static/stylesheet/style.css">
+    {% block stylesheet %}{% endblock %}
+    {% block javascript %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <img src="/static/images/logo-top.png" alt="Ecomedicinal">
+        <ul>
+            <li><a href="{% url 'index' %}">INICIO</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">SAIR</a></li>
+                <li><a href="{% url 'dashboard' %}">DASHBOARD</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">ADMIN</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div id="content-container" class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <section class="sub-rodape">
+        <img src="/static/images/logo-rodape.png" alt="Ecomedicinal"></div>
+    </section>
+    <footer>
+        <div class="copyright-text text-center">Todos os Direitos reservados para: Ecomedicinal - 2018</div>
+    </footer>
+</body>
+</html>

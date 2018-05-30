@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <form action="" method="post">
+            <div class="form-group">
+                <h2>Especifique seus sintomas:</h2>
+                <select name="sintomas" id="sintomas_id" multiple="" class="form-control form-control-lg" size="10">
+                    {% for sintoma in sintomas %}
+                        <option value="{{ sintoma.id }}">{{ sintoma.descricao }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-lg btn-success" value="Buscar Receitas">
+            </div>
+        {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

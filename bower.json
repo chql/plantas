@@ -1,0 +1,13 @@
+{
+  "name": "plyntas",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery.tagsinput": "^1.3.6",
+    "ckeditor": "^4.9.2",
+    "bootstrap": "^4.1.1"
+  }
+}

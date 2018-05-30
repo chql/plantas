@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <h2>{{ resultados|length }} planta(s) encontrada(s).</h2>
+    {% for pk, resultado in resultados.items %}
+        <div class="row">
+            <div class="card" style="width: 100%">
+                <h3 class="card-header">{{ resultado.planta.nome }}</h3>
+                <div class="card-body">
+                    <img src="/{{ resultado.planta.imagem }}" alt="" class="img-thumbnail img-responsive float-left">
+                    <p class="card-text">{{ resultado.planta.descricao }}</p>
+                    <h4 class="card-title">Receitas a partir dessa planta:</h4>
+                    <ul>
+                    {% for receita in resultado.receitas %}
+                        <li><a href="{% url 'receitas-detail' receita.id %}">{{ receita.titulo }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

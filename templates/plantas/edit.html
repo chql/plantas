@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Preencha os dados da planta</h2>
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="form-group col">
+                    <label for="id_nome">Nome</label>
+                    <input id="id_nome" name="nome" class="form-control form-control-lg" value="{{ form.nome.value|default:'' }}">
+                </div>
+                <div class="form-group col">
+                    <label for="id_tipo">Tipo</label>
+                    {{ form.tipo }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_descricao">Descrição</label>
+                <textarea class="form-control form-control-lg" name="descricao" id="id_descricao">{{ form.descricao.value|default:'' }}</textarea>
+            </div>
+            <div class="form-group">
+                {{ form.imagem.label_tag }}
+                <input type="file" name="imagem" id="id_imagem" class="form-control-file">
+                {% if form.imagem.value %}
+                    <div class="row">
+                        <div class="figure">
+                            <img src="/{{ form.imagem.value }}" alt="{{ form.imagem.value }}" class="img-fluid img-thumbnail">
+                            <figcaption class="figure-caption">{{ form.imagem.value }}</figcaption>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar alterações" class="btn btn-success">
+                {% if planta %}
+                    <a href="{% url 'plantas-delete' pk=planta.id %}" class="btn btn-danger float-right">Remover</a>
+                {% else %}
+                    <a href="{% url 'dashboard' %}" class="btn btn-light">Cancelar</a>
+                {% endif %}
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        <h4>Tem certeza que deseja remover a planta "{{ planta.nome }}".</h4>
+        <input type="submit" value="Remover">
+        <a href="{% url 'plantas-update' pk=planta.id %}">Cancelar</a>
+        {% csrf_token %}
+    </form>
+{% endblock %}

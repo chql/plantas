@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        <h4>Tem certeza que deseja remover a receita "{{ receita.titulo }}".</h4>
+        <input type="submit" value="Remover">
+        <a href="{% url 'receitas-update' pk=receita.id %}">Cancelar</a>
+        {% csrf_token %}
+    </form>
+{% endblock %}

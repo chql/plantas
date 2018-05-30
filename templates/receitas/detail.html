@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{ receita.titulo }}</h2>
+        <div>
+            <h4>
+        {% for sintoma in receita.sintomas.all %}
+            <span class="badge badge-info">{{ sintoma.descricao }}</span>
+        {% endfor %}
+            </h4>
+        </div>
+        <div>
+            <p>{{ receita.conteudo|safe }}</p>
+        </div>
+    </div>
+{% endblock %}

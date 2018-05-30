@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{ receitas.count }} planta(s) encontradas.</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td>#</td>
+                <td>Título</td>
+                <td>Ação</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for receita in receitas %}
+                <tr>
+                    <td>{{ receita.id }}</td>
+                    <td>{{ receita.titulo }}</td>
+                    <td><a href="{% url 'receitas-update' pk=receita.id %}" class="btn btn-primary">Alterar</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
