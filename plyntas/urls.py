@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from plyntas.views import index_view, dashboard_view, sintomas_put,\
+from plyntas.views import index_view, dashboard_view, sintomas_put, receitas_card,\
                             PlantaCreate, PlantaList, PlantaUpdate, PlantaDelete,\
                             ReceitaCreate, ReceitaList, ReceitaUpdate, ReceitaDelete, ReceitaDetail,\
                             SintomasFilter
@@ -36,6 +36,7 @@ urlpatterns = [
     path('receitas/<slug:pk>/update', ReceitaUpdate.as_view(), name='receitas-update'),
     path('receitas/<slug:pk>/delete', ReceitaDelete.as_view(), name='receitas-delete'),
     path('receitas/<slug:pk>/detail', ReceitaDetail.as_view(), name='receitas-detail'),
+    path('receitas/cards', receitas_card, name='receitas-card'),
 
     path('receitas/search', SintomasFilter.as_view(), name='sintomas-filter'),
     path('sintomas', sintomas_put, name='sintomas'),

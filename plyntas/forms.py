@@ -1,4 +1,4 @@
-from plyntas.models import Planta, Receita
+from .models import Planta, Receita
 from django import forms
 
 

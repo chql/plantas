@@ -20,7 +20,30 @@ def index_view(request):
     :param request:
     :return:
     """
-    return render(request, 'index.html')
+    return render(request, 'index.html', {
+        'sintomas': Sintoma.objects.all()[:5]
+    })
+
+
+def receitas_card(request):
+    """
+    Exibe cartoes de receitas filtradas por sintoma ou planta.
+    :param request:
+    :return:
+    """
+    sintoma = request.GET.get('sintoma')
+    categoria = request.GET.get('categoria')
+
+    if sintoma is not None:
+        receitas = Receita.objects.filter(sintomas__in=[int(sintoma)]).all()
+    elif categoria is not None:
+        receitas = Receita.objects.filter(plantas_base__tipo=categoria).all()
+    else:
+        receitas = Receita.objects.all()[:5]
+
+    return render(request, 'receitas/card.html', {
+        'receitas': receitas or Receita.objects.all()[:5]
+    })
 
 
 @login_required
@@ -33,7 +56,7 @@ def dashboard_view(request):
     return render(request, 'dashboard.html')
 
 
-@require_http_methods(['PUT','GET'])
+@require_http_methods(['PUT'])
 @csrf_exempt
 @login_required
 def sintomas_put(request):

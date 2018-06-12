@@ -13,15 +13,15 @@
         <ul>
             <li class="two" style="background-image:url(/static/images/slides/2.jpg);">
                 <div class="row1"><h1>As Plantas e Receitas Naturais que você procura estão aqui</h1></div>
-                <div class="row2"><a href="{% url 'sintomas-filter' %}" class="botao">VEJA AS RECEITAS</a></div>
+                <div class="row2"><a href="{% url 'sintomas-filter' %}" class="btn btn-lg btn-success shadow-lg">VEJA AS RECEITAS</a></div>
             </li>
             <li class="one" style="background-image:url(/static/images/slides/1.jpg);">
                 <div class="row1"><h1>Você sabia? Muitos Remédios Naturais são bem melhores que os Industrializados...</h1></div>
-                <div class="row2"><a href="#" class="botao">SAIBA MAIS</a></div>
+                <div class="row2"><a href="#" class="btn btn-lg btn-light shadow-lg">SAIBA MAIS</a></div>
             </li>
             <li class="three" style="background-image:url(/static/images/slides/3.jpg);">
                 <div class="row1"><h1>A Cura Pela Natureza a um Clique de distância...</h1></div>
-                <div class="row2"><a href="#" class="botao">TERMOS DE USO</a></div>
+                <div class="row2"><a href="#" class="btn btn-lg btn-primary shadow-lg">TERMOS DE USO</a></div>
             </li>
         </ul>
     </div>
@@ -31,11 +31,58 @@
 
     <section class="plantas-sintomas">
         <h2>PLANTAS POR SINTOMAS</h2>
-
+        <div class="container">
+            <div>
+                <ul class="nav nav-pills justify-content-center" id="sintomas-nav">
+                    <li class="nav-item">
+                        <a href="#/receitas/cards" class="nav-link active">Todas</a>
+                    </li>
+                {% for sintoma in sintomas %}
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?sintoma={{ sintoma.id }}" class="nav-link">{{ sintoma.descricao }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="container" id="sintomas-cards">
+            </div>
+        </div>
     </section>
 
     <section class="plantas-tipo">
         <h2>PLANTAS POR TIPO</h2>
+        <div class="container">
+            <div>
+                <ul class="nav nav-pills justify-content-center" id="categorias-nav">
+                    <li class="nav-item">
+                        <a href="#/receitas/cards" class="nav-link active">Todas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?categoria=casca" class="nav-link">Casca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?categoria=cera" class="nav-link">Cera</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?categoria=flor" class="nav-link">Flor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?categoria=folha" class="nav-link">Folha</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?categoria=fruta" class="nav-link">Fruta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?categoria=raiz" class="nav-link">Raiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/receitas/cards?categoria=seiva" class="nav-link">Seiva</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="container" id="categorias-cards">
+            </div>
+        </div>
     </section>
 
     <section class="texto-motivador">
@@ -47,4 +94,29 @@
 
         <div class="links"><a href="#" class="botao2">LEIA MAIS SOBRE ESTE ASSUNTO</a></div>
     </section>
+
+    <script>
+    $(function(){
+        function makeNavigation($links, $cards) {
+            $links.click(function(e){
+                e.preventDefault();
+                let $link = $(this);
+                $links.removeClass('active');
+                $link.addClass('active');
+                $cards.fadeOut(200, function(){
+                    $.get($link.attr('href').substr(1), function(response){
+                        $cards.html(response);
+                        $cards.fadeIn(200);
+                    });
+                });
+            });
+        }
+        makeNavigation($('#sintomas-nav a'), $('#sintomas-cards'));
+        makeNavigation($('#categorias-nav a'), $('#categorias-cards'));
+        $.get('/receitas/cards', function(response){
+            $('#sintomas-cards').html(response);
+            $('#categorias-cards').html(response);
+        });
+    });
+    </script>
 {% endblock %}
