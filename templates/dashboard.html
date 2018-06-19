@@ -4,23 +4,32 @@
     <div class="container">
         <h2>Painel do Administrador</h2>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Plantas</h3>
+                        <h4 class="card-title">Plantas</h4>
                         <p class="card-text">Gerencie o banco de dados de plantas.</p>
                         <a href="{% url 'plantas-create' %}" class="btn btn-lg btn-outline-primary">Adicionar</a>
                         <a href="{% url 'plantas-list' %}" class="btn btn-lg btn-outline-secondary">Listar</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Receitas</h3>
+                        <h4 class="card-title">Receitas</h4>
                         <p class="card-text">Gerencie o banco de dados de receitas.</p>
                         <a href="{% url 'receitas-create' %}" class="btn btn-lg btn-outline-primary">Adicionar</a>
                         <a href="{% url 'receitas-list' %}" class="btn btn-lg btn-outline-secondary">Listar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Preferências</h4>
+                        <p class="card-text">Dados pessoais e outras preferências.</p>
+                        <a href="{% url 'password_change' %}" class="btn btn-lg btn-outline-primary">Alterar senha</a>
                     </div>
                 </div>
             </div>

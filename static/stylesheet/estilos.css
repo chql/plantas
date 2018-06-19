@@ -184,3 +184,7 @@ footer{
 		justify-content: center;
 	}
 }
+
+.nav-link.active {
+	background-color: #28a745 !important;
+}

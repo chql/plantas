@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 
+{% block javascript %}
+    <script src="/static/libs/jquery/dist/jquery.min.js"></script>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <h2>Preencha os dados da planta</h2>
@@ -21,13 +25,13 @@
             </div>
             <div class="form-group">
                 <label for="id_descricao">Descrição</label>
-                <textarea class="form-control form-control-lg" name="descricao" id="id_descricao">{{ form.descricao.value|default:'' }}</textarea>
+                <textarea class="form-control form-control-lg" name="descricao" id="id_descricao" rows="5">{{ form.descricao.value|default:'' }}</textarea>
             </div>
             <div class="form-group">
                 {{ form.imagem.label_tag }}
                 <div class="custom-file">
                     <input type="file" name="imagem" id="id_imagem" class="custom-file-input">
-                    <label for="id_imagem" class="custom-file-label">Selecionar Imagem</label>
+                    <label for="id_imagem" id="id_imagem_label" class="custom-file-label">Selecionar Imagem</label>
                 </div>
                 {% if form.imagem.value %}
                     <div class="row">
@@ -49,4 +53,10 @@
             {% csrf_token %}
         </form>
     </div>
+    <script>
+        $('#id_imagem').change(function(e){
+            console.log(e);
+            $('#id_imagem_label').text(this.value.split(/(\\|\/)/g).pop());
+        });
+    </script>
 {% endblock %}
