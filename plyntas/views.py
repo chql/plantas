@@ -11,7 +11,7 @@ from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import PlantaForm, ReceitaForm
-from .models import Planta, Receita, Sintoma
+from .models import Planta, Receita, Sintoma, Categoria
 
 
 def index_view(request):
@@ -21,6 +21,7 @@ def index_view(request):
     :return:
     """
     return render(request, 'index.html', {
+        'categorias': Categoria.objects.prefetch_related('sintomas').all(),
         'sintomas': Sintoma.objects.all()[:5]
     })
 

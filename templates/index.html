@@ -3,6 +3,7 @@
 {% block javascript %}
     <script src="/static/libs/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/static/javascript/efeito.js"></script>
+    <script type="text/javascript" src="/static/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -26,11 +27,43 @@
         </ul>
     </div>
 
-    <header>
-    </header>
+    <div class="container" style="margin-top: 25px">
+        <h2>Especifique seus sintomas:</h2>
+        <div class="accordion" id="categorias">
+        {% for categoria in categorias %}
+            {% if categoria.sintomas.all|length > 0 %}
+            <div class="card">
+                <div class="card-header" id="heading_{{ categoria.id }}">
+                    <h3 class="mb-0">
+                        <button class="btn btn-lg btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{ categoria.id }}">{{ categoria.descricao }}</button>
+                    </h3>
+                </div>
+                <div class="collapse" data-parent="#categorias" id="collapse_{{ categoria.id }}" aria-labelledby="headingTwo">
+                    <div class="card-body">
+                        <form action="{% url 'sintomas-filter' %}" method="post">
+                            <div class="form-group">
+                                {% for sintoma in categoria.sintomas.all %}
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" value="{{ sintoma.id }}" name="sintomas" class="form-check-label" id="sintoma{{ sintoma.id }}">
+                                        <label for="sintoma{{ sintoma.id }}">{{ sintoma.descricao }}</label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-lg btn-success" value="Buscar Plantas">
+                            </div>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
 
     <section class="plantas-sintomas">
-        <h2>PLANTAS POR SINTOMAS</h2>
+        <h2>RECEITAS POR SINTOMAS</h2>
         <div class="container">
             <div>
                 <ul class="nav nav-pills justify-content-center" id="sintomas-nav">
@@ -50,7 +83,7 @@
     </section>
 
     <section class="plantas-tipo">
-        <h2>PLANTAS POR TIPO</h2>
+        <h2>RECEITAS POR TIPO DE PLANTA</h2>
         <div class="container">
             <div>
                 <ul class="nav nav-pills justify-content-center" id="categorias-nav">
@@ -92,10 +125,11 @@
 
         <p>Desde o início dos tempos que o Homem recolhe da Natureza aquilo que precisa para viver, seja a nível de alimentos, de vestuário, etc. Hoje em dia, estamos a voltar a dar valor à capacidade que as plantas têm de nos curar e resolver problemas de saúde. A grande vantagem da Medicina Natural é que não tem efeitos secundários mesmo que o tratamento efetuado tenha de ser longo.</p>
 
-        <div class="links"><a href="#" class="botao2">LEIA MAIS SOBRE ESTE ASSUNTO</a></div>
+        <div class="links"><a href="{% url 'termos' %}" class="botao2">LEIA MAIS SOBRE ESTE ASSUNTO</a></div>
     </section>
 
     <script>
+    $('.collapse').collapse();
     $(function(){
         function makeNavigation($links, $cards) {
             $links.click(function(e){
