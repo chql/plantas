@@ -1,10 +1,12 @@
 <div class="card-deck">
 {% for receita in receitas %}
     <div class="card" style="max-width: 300px;">
-        <img src="/{{ receita.plantas_base.all.0.imagem }}" alt="" class="card-img-top" style="width: 80%;">
+        <div style="height: 150px; overflow: hidden;">
+            <img src="/{{ receita.plantas_base.all.0.imagem }}" alt="" class="card-img-top" style="width: 80%;">
+        </div>
         <div class="card-body">
             <h5 class="card-title">{{ receita.titulo }}</h5>
-            <a href="{% url 'receitas-detail' receita.id %}">Ler Receita</a>
+            <a href="{% url 'receitas-detail' receita.id %}"class="btn btn-block btn-success">Ver Receita</a>
         </div>
     </div>
 {% endfor %}

@@ -56,6 +56,15 @@ def dashboard_view(request):
     return render(request, 'dashboard.html')
 
 
+def termos_view(request):
+    """
+    Exibe a pagina de termos de uso.
+    :param request:
+    :return:
+    """
+    return render(request, 'termos.html')
+
+
 @require_http_methods(['PUT'])
 @csrf_exempt
 @login_required

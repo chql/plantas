@@ -1,7 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <div class="container">
+    <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
+        <div class="container">
+            <div class="alert alert-info">
+                <h4>Importante!</h4>
+                <p>
+                    <strong>As receitas disponíveis aqui ajudam apenas no alívio de sintomas.
+                    Na persistência dos mesmos é recomendável uma consulta com um médico especialista.</strong>
+                </p>
+                <h5>Para saber mais leia nossos <a href="{% url 'termos' %}">termos de uso</a>.</h5>
+            </div>
+        </div>
         <h2>{{ receita.titulo }}</h2>
         <div>
             <h4>

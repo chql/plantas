@@ -17,6 +17,7 @@
                     <td>{{ receita.id }}</td>
                     <td>{{ receita.titulo }}</td>
                     <td><a href="{% url 'receitas-update' pk=receita.id %}" class="btn btn-primary">Alterar</a></td>
+                    <td><a href="{% url 'receitas-delete' pk=receita.id %}" class="btn btn-danger">Excluir</a></td>
                 </tr>
             {% endfor %}
             </tbody>
