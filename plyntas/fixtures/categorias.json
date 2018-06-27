@@ -17,14 +17,14 @@
     "model": "plyntas.categoria",
     "pk": 3,
     "fields": {
-      "descricao": "Irritações"
+      "descricao": "Nariz e Garganta"
     }
   },
   {
     "model": "plyntas.categoria",
     "pk": 4,
     "fields": {
-      "descricao": "Tosse"
+      "descricao": "Estômago"
     }
   },
   {
