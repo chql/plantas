@@ -188,3 +188,47 @@ footer{
 .nav-link.active {
 	background-color: #28a745 !important;
 }
+
+.btn-success {
+	background-color: #90c541 !important;
+	border: 0;
+}
+
+.btn-success:hover {
+	background-color: rgba(51, 51, 51, 0.7) !important;
+}
+
+.btn-primary {
+	background-color: #12574b !important;
+	border: 0;
+}
+
+.btn-primary:hover {
+	background-color: #0f493f !important;
+}
+
+.btn-outline-primary {
+	border-color: #12574b !important;
+	color: #0f493f;
+}
+
+.btn-outline-primary:hover {
+	background-color: #0f493f !important;
+}
+
+.nav-link.active {
+	background-color: #90c541 !important;
+	color: white !important;
+}
+
+.nav-link.active:hover {
+	background-color: rgba(51, 51, 51, 0.7) !important;
+}
+
+.btn-link {
+	color: rgba(51, 51, 51, 0.7) !important;
+}
+
+.nav-link {
+	color: rgba(51, 51, 51, 0.7) !important;
+}
